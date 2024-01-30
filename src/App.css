@@ -1,0 +1,17 @@
+
+.s
+{
+    height: 500px;
+    width: 100%;
+}
+.App
+{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.c
+{
+    display: flex;
+justify-content: space-around;
+margin-top: 40px;
+}
