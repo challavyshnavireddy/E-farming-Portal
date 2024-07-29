@@ -4,7 +4,6 @@ import { useState } from "react";
 import axios from "axios";
 
 const Shop = () => {
-
   let [err, setErr] = useState("");
   let {
     register,
@@ -16,17 +15,19 @@ const Shop = () => {
   let submitForm = (productObj) => {
     //  console.log(productObj)
     axios
-      .post("http://localhost:3500/product-api/create-product", productObj)
+      .post("http://localhost:3500/product-api/create-product", productObj, {
+        headers : { "Authorization": `Bearer ${localStorage.getItem("token")}`},
+      })
       .then((response) => {
-        // console.log(response)
+        //  console.log(response.status)
         if (response.status === 200) {
           // setProducts(prev => [...prev , response.data])
-        // setProducts(response.data)
-          setValue("name",'')
-          setValue("cost",'')
-          setValue("stock",'')
-          setValue("productType",'')
-          console.log("new product posted")
+          // setProducts(response.data)
+          setValue("name", "");
+          setValue("cost", "");
+          setValue("stock", "");
+          setValue("productType", "");
+          console.log("new product posted");
         } else {
           setErr(response.data.message);
         }

@@ -81,7 +81,7 @@ const Register = () => {
               {...register("password", { required: true })}
             />
             {errors.password?.type === "required" && (
-              <p className="text-danger ">*password is required</p>
+              <p className="text-danger"> *password is required </p>
             )}
             <div className='mt-3'>
   <input type="radio" name="userType" value="customer" id="customer" {...register("userType", { required: true })} />

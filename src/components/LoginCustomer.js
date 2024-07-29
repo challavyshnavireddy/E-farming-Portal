@@ -29,7 +29,7 @@ let {loginFunction,userState,setUserState}=useContext(loginContext)
   },[userState])
 
 
-console.log(userState)
+// console.log(userState)
   return (
     <div className="container ">
       <div className="row form-style ">
@@ -49,7 +49,7 @@ console.log(userState)
             {errors.username?.type === "required" && (
               <p className="text-danger ">*username is required</p>
             )}
-            <label htmlFor="email" className=" fs-4 mt-3">
+            {/* <label htmlFor="email" className=" fs-4 mt-3">
               email
             </label>
             <input
@@ -60,7 +60,7 @@ console.log(userState)
             />
             {errors.email?.type === "required" && (
               <p className="text-danger ">*email is required</p>
-            )}
+            )} */}
             <label htmlFor="password" className="text-secondary fs-4 mt-3">
               Password
             </label>

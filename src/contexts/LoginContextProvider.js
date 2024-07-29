@@ -21,25 +21,24 @@ const logoutFunction=()=>{
   }
 
 const loginFunction=(userCredentialsObj)=>{
-  axios.post("http://localhost:3500/user-api/login-user", userCredentialsObj)
+  axios.post("http://localhost:3500/user-api/login-user", userCredentialsObj, {
+    headers : { "Authorization": `Bearer ${localStorage.getItem("token")}`},
+  })
     .then((response)=>{
       if(response.data.message==='logged in')
       {
         // save token to local storage
         localStorage.setItem("token",response.data.token)
-         console.log('logged in')
-        console.log(response.data.user)
-        
-      
+        //  console.log('logged in')
+        // console.log(response.data.user)
         setUserState(response.data.user)
-        
-        
-       
-        
         //  wont reflect value here --> console.log(loginStatus)
-         
+        // const value=localStorage.getItem("token")
+        // console.log(value)
+        
       }
       else{
+        alert(response.data.message)
         console.log(response.data.message)
     } 
 }
@@ -47,7 +46,10 @@ const loginFunction=(userCredentialsObj)=>{
      .catch((err)=>{
         console.log("err in user login: ",err)
      })
+     
+
 }
+
 
 
 

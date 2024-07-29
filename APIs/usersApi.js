@@ -4,8 +4,15 @@ const expressAsyncHandler = require("express-async-handler");
  const bcryptjs=require('bcryptjs')
  const jwt=require('jsonwebtoken')
 
+
+ //middleware
+ const middleware=()=>{
+  console.log("middleware executed")
+  next();
+ }
 // middleware, mainly for post request
 userApp.use(exp.json());
+
 
 userApp.post(
   "/create-user",
@@ -38,27 +45,33 @@ userApp.post("/login-user",expressAsyncHandler(async(request,response)=>{
   const usersCollectionObj = request.app.get("usersCollectionObj");
   const newUser = request.body;
   const userUsername=await usersCollectionObj.findOne({username:newUser.username})
+  // const userEmail=await usersCollectionObj.findOne({email:newUser.email})
   
   if(userUsername!==null)
   {
     let isValidPassword=await bcryptjs.compare(newUser.password,userUsername.password)
+    // let isValidMail=(newUser.email===userEmail.email)
     if(isValidPassword===true)
     {
     // response.status(200).send({message:"logged in"})
     // jwt token
-    console.log(userUsername)
-    let jwtToken=jwt.sign({username:userUsername.username},'abcdef',{expiresIn:20})
+    // console.log(userUsername)
+    let jwtToken=jwt.sign({username:userUsername.username},'abcdef')
     delete userUsername.password
     response.send({message:"logged in",token:jwtToken,user:userUsername})
-    console.log(request.headers)
+    // console.log("HEADERS VALUES: ",request)
     }
+    // else if(!isValidMail)
+    // {
+    //   response.status(200).send({message:"incorrect mail"})
+    // }
     else
     {
       response.status(200).send({message:"incorrect password"})
     }
   }
   else{
-    response.send({message:"invalid"})
+    response.send({message:"You Haven't Registered Yet..!!"})
   }
 }))
 

@@ -1,0 +1,12 @@
+.mm{
+    margin-top: 150px;
+    display: flex;
+    justify-content: space-around;
+    background-color: rgb(149, 203, 95);
+    height: 50px;
+  
+}
+.ww{ 
+     text-align: center;
+     margin:auto;
+}

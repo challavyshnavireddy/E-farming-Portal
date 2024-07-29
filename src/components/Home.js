@@ -1,4 +1,5 @@
 import React from 'react'
+import Footer from './Footer';
 
 import CardsDemo from "./CardsDemo";
 function Home() {
@@ -31,7 +32,9 @@ function Home() {
             <CardsDemo card={card3} />
             </div>
           </div>
+          <div><Footer/></div>
         </div>
+        
       
   )
 }
