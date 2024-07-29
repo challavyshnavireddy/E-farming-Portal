@@ -24,7 +24,7 @@ let {loginFunction,userState,setUserState}=useContext(loginContext)
   )=>{
     if(userState)
     {
-      navigate("/user-profile")
+      navigate("/")
     }
   },[userState])
 

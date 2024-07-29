@@ -12,7 +12,7 @@ import About from "./components/About";
 import Register from "./components/Register";
 import LoginCustomer from "./components/LoginCustomer";
 import Shop from "./components/addCategories/Shop";
-import UserProfile from "./components/user-profile/UserProfile";
+
 import CardsUsage from "./components/allCategories/CardsUsage";
 function App() {
   const router = createBrowserRouter([
@@ -48,13 +48,9 @@ function App() {
         {
           path:"/AddToCart",
           element:<CardsUsage/>
-        },
+        }
         // route for user-profile
-        {
-          path: "/user-profile",
-          element: <UserProfile />,
-          
-        },
+        
       ],
     }
   ]);

@@ -2,9 +2,11 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { loginContext } from "../../contexts/LoginContextProvider";
 
 const ShowProducts = (props) => {
+  let navigate = useNavigate();
   const { userState } = useContext(loginContext);
   let [q, setQ] = useState(0);
   let decrease = () => {
@@ -30,6 +32,7 @@ const ShowProducts = (props) => {
             console.error("Server responded with:", error.response.data);
           }
         });
+        navigate("/AddToCart")
     };
   
   
